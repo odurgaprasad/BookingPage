@@ -15,12 +15,11 @@ export async function fetchTestimonials() {
     const response = await fetch("https://jsonplaceholder.typicode.com/users");
     const users = await response.json();
 
-    // Map the user data to include an image, name, and 200-char description
     return users.map((user) => ({
       id: user.id,
       name: user.name,
-      image: `https://i.pravatar.cc/150?u=${user.id}`, // Unique image per user
-      text: `${user.company.catchPhrase} ${user.company.bs}`.slice(0, 200), // Truncate description to 200 chars
+      image: `https://i.pravatar.cc/150?u=${user.id}`,
+      text: `${user.company.catchPhrase} ${user.company.bs}`.slice(0, 200),
     }));
   } catch (error) {
     console.error("Failed to fetch testimonials", error);
